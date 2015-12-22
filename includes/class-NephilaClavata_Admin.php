@@ -28,7 +28,7 @@ class NephilaClavata_Admin {
 	public static function get_instance() {
 		if( !isset( self::$instance ) ) {
 			$c = __CLASS__;
-			self::$instance = new $c();    
+			self::$instance = new $c();
 		}
 
 		return self::$instance;
@@ -93,7 +93,7 @@ class NephilaClavata_Admin {
 				switch ($field) {
 				case 'access_key':
 				case 'secret_key':
-					$iv->set_rules($field, array('trim','esc_html','required'));
+					$iv->set_rules($field, array('trim','esc_html'));
 					break;
 				default:
 					$iv->set_rules($field, array('trim','esc_html'));

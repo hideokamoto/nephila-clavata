@@ -23,16 +23,14 @@ class S3_helper {
 	public static function get_instance() {
 		if( !isset( self::$instance ) ) {
 			$c = __CLASS__;
-			self::$instance = new $c();    
+			self::$instance = new $c();
 		}
 
 		return self::$instance;
 	}
 
 	public function init($access_key = null, $secret_key = null, $region = null) {
-		if ($access_key && $secret_key) {
-			$this->init_s3($access_key, $secret_key, $region);
-		}
+		$this->init_s3($access_key, $secret_key, $region);
 	}
 
 	// get S3 object
@@ -40,8 +38,6 @@ class S3_helper {
 		if ( !isset($region) )
 			$region = Region::AP_NORTHEAST_1;
 		$s3 = Aws::factory(array(
-			'key' => $access_key,
-			'secret' => $secret_key,
 			'region' => $this->get_region($region),
 			))->get('s3');
 		$this->s3 = $s3;
